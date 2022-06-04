@@ -4,6 +4,7 @@ const todoList = document.querySelector("#todo-list");
 // retrieve from localStorage
 const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
 
+
 todoList.addEventListener("click", (e) => {
   if (e.target.tagName === "BUTTON") {
     e.target.parentElement.remove();
@@ -23,15 +24,15 @@ form.addEventListener("submit", function (e) {
   }
   const deleteBtn = document.createElement("button");
   deleteBtn.innerText = " Delete";
+
   newLi.textContent = todoInput.value;
+  
   newLi.classList.add("todo-list");
   todoList.appendChild(newLi);
   newLi.appendChild(deleteBtn);
   deleteBtn.classList.add('delbtn')
   todoInput.value = '';
 
+  localStorage.setItem('todo-list', JSON.stringify(todoList))
 
-   // save to localStorage
-   savedTodos.push({ task: newLi.textContent, isCompleted: false });
-   localStorage.setItem("todos", JSON.stringify(savedTodos));
  });
